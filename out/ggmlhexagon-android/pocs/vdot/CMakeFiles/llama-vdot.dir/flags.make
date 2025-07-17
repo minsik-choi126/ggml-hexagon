@@ -6,5 +6,5 @@ CXX_DEFINES = -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -DGGML_USE_HEXA
 
 CXX_INCLUDES = -I/home/minsik/ggml-hexagon/pocs -I/home/minsik/ggml-hexagon/common/. -I/home/minsik/ggml-hexagon/common/../vendor -I/home/minsik/ggml-hexagon/src/../include -I/home/minsik/ggml-hexagon/ggml/src/../include
 
-CXX_FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security     -O3 -march=armv8.2-a+dotprod+fp16 -ffp-model=fast -fno-finite-math-only -O3 -DNDEBUG    -O3 -march=armv8.2-a+dotprod+fp16 -ffp-model=fast -fno-finite-math-only -fPIE -pthread
+CXX_FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security     -O3 -march=armv8.2-a+dotprod+fp16 -ffp-model=fast -fno-finite-math-only -fno-limit-debug-info  -fPIE -pthread
 

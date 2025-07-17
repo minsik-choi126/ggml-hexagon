@@ -7,11 +7,11 @@ C_DEFINES = -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -DGGML_USE_HEXAGO
 
 C_INCLUDES = -I/home/minsik/ggml-hexagon/examples/gguf-hash/deps -I/home/minsik/ggml-hexagon/ggml/src/../include
 
-C_FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security      -O3 -march=armv8.2-a+dotprod+fp16 -ffp-model=fast -fno-finite-math-only -O3 -DNDEBUG    -O3 -march=armv8.2-a+dotprod+fp16 -ffp-model=fast -fno-finite-math-only -fPIE -Wshadow -Wstrict-prototypes -Wpointer-arith -Wmissing-prototypes -Werror=implicit-int -Werror=implicit-function-declaration -Wall -Wextra -Wpedantic -Wcast-qual -Wno-unused-function -Wunreachable-code-break -Wunreachable-code-return -Wdouble-promotion
+C_FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security      -O3 -march=armv8.2-a+dotprod+fp16 -ffp-model=fast -fno-finite-math-only -fno-limit-debug-info  -fPIE -Wshadow -Wstrict-prototypes -Wpointer-arith -Wmissing-prototypes -Werror=implicit-int -Werror=implicit-function-declaration -Wall -Wextra -Wpedantic -Wcast-qual -Wno-unused-function -Wunreachable-code-break -Wunreachable-code-return -Wdouble-promotion
 
 CXX_DEFINES = -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -DGGML_USE_HEXAGON
 
 CXX_INCLUDES = -I/home/minsik/ggml-hexagon/examples/gguf-hash/deps -I/home/minsik/ggml-hexagon/ggml/src/../include
 
-CXX_FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security     -O3 -march=armv8.2-a+dotprod+fp16 -ffp-model=fast -fno-finite-math-only -O3 -DNDEBUG    -O3 -march=armv8.2-a+dotprod+fp16 -ffp-model=fast -fno-finite-math-only -fPIE -Wmissing-declarations -Wmissing-noreturn -Wall -Wextra -Wpedantic -Wcast-qual -Wno-unused-function -Wunreachable-code-break -Wunreachable-code-return -Wmissing-prototypes -Wextra-semi
+CXX_FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security     -O3 -march=armv8.2-a+dotprod+fp16 -ffp-model=fast -fno-finite-math-only -fno-limit-debug-info  -fPIE -Wmissing-declarations -Wmissing-noreturn -Wall -Wextra -Wpedantic -Wcast-qual -Wno-unused-function -Wunreachable-code-break -Wunreachable-code-return -Wmissing-prototypes -Wextra-semi
 
