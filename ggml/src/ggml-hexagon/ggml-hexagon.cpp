@@ -3481,9 +3481,19 @@ int qnn_instance::qnn_init(const QnnSaver_Config_t ** saver_config) {
         QnnHtpDevice_CustomConfig_t soc_customconfig;
         soc_customconfig.option    = QNN_HTP_DEVICE_CONFIG_OPTION_SOC;
         soc_customconfig.socModel  = soc_info.soc_model;
+
+        QnnHtpDevice_CustomConfig_t arch_customconfig;
+        arch_customconfig.option = QNN_HTP_DEVICE_CONFIG_OPTION_ARCH;
+        arch_customconfig.arch.arch = (QnnHtpDevice_Arch_t)soc_info.htp_arch;
+        arch_customconfig.arch.deviceId = 0;
+
         QnnDevice_Config_t soc_devconfig;
         soc_devconfig.option       = QNN_DEVICE_CONFIG_OPTION_CUSTOM;
         soc_devconfig.customConfig = &soc_customconfig;
+
+        QnnDevice_Config_t arch_devconfig;
+        arch_devconfig.option = QNN_DEVICE_CONFIG_OPTION_CUSTOM;
+        arch_devconfig.customConfig = &arch_customconfig;
 
         /*
         QnnHtpDevice_CustomConfig_t arch_customconfig;
@@ -3494,7 +3504,7 @@ int qnn_instance::qnn_init(const QnnSaver_Config_t ** saver_config) {
         arch_devconfig.option       = QNN_DEVICE_CONFIG_OPTION_CUSTOM;
         arch_devconfig.customConfig = &arch_customconfig;
         */
-        const QnnDevice_Config_t * p_deviceconfig[] = { &soc_devconfig, nullptr };
+        const QnnDevice_Config_t * p_deviceconfig[] = { &soc_devconfig, &arch_devconfig, nullptr };
         qnnstatus = _qnn_raw_interface.deviceCreate(_qnn_log_handle, p_deviceconfig, &_qnn_device_handle);
     } else {
         qnnstatus = _qnn_interface.qnn_device_create(_qnn_log_handle, nullptr, &_qnn_device_handle);
