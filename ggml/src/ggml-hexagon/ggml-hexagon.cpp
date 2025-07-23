@@ -3466,11 +3466,6 @@ int qnn_instance::qnn_init(const QnnSaver_Config_t ** saver_config) {
                 GGMLHEXAGON_LOG_VERBOSE("deviceID:%d, deviceType:%d, numCores %d\n", (int) infos[i].v1.deviceId,
                              (int) infos[i].v1.deviceType, (int) infos[i].v1.numCores);
                 QnnDevice_DeviceInfoExtension_t devinfo = infos[i].v1.deviceInfoExtension;
-                if (devinfo == NULL) {
-                    GGMLHEXAGON_LOG_WARN("devinfo is NULL");
-                    continue;
-                }
-                
                 chipinfo                                = devinfo->onChipDevice;
                 size_t htp_arch                         = (size_t) chipinfo.arch;
                 GGMLHEXAGON_LOG_VERBOSE("htp_type:%d(%s)\n", devinfo->devType,
