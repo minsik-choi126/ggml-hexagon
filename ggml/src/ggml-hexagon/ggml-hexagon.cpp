@@ -3468,9 +3468,6 @@ int qnn_instance::qnn_init(const QnnSaver_Config_t ** saver_config) {
                 QnnDevice_DeviceInfoExtension_t devinfo = infos[i].v1.deviceInfoExtension;
                 chipinfo                                = devinfo->onChipDevice;
                 size_t htp_arch                         = (size_t) chipinfo.arch;
-                GGMLHEXAGON_LOG_INFO("soc_model: %d", soc_info.soc_model);
-                GGMLHEXAGON_LOG_INFO("htp_arch: %zu", soc_info.htp_arch);
-                GGMLHEXAGON_LOG_INFO("vtcmSize: %zu", soc_info.vtcm_size);
 
                 GGMLHEXAGON_LOG_VERBOSE("htp_type:%d(%s)\n", devinfo->devType,
                              (devinfo->devType == QNN_HTP_DEVICE_TYPE_ON_CHIP) ? "ON_CHIP" : "");
@@ -3486,18 +3483,9 @@ int qnn_instance::qnn_init(const QnnSaver_Config_t ** saver_config) {
         soc_customconfig.option    = QNN_HTP_DEVICE_CONFIG_OPTION_SOC;
         soc_customconfig.socModel  = soc_info.soc_model;
 
-        QnnHtpDevice_CustomConfig_t arch_customconfig;
-        arch_customconfig.option = QNN_HTP_DEVICE_CONFIG_OPTION_ARCH;
-        arch_customconfig.arch.arch = (QnnHtpDevice_Arch_t)soc_info.htp_arch;
-        arch_customconfig.arch.deviceId = 69;
-
         QnnDevice_Config_t soc_devconfig;
         soc_devconfig.option       = QNN_DEVICE_CONFIG_OPTION_CUSTOM;
         soc_devconfig.customConfig = &soc_customconfig;
-
-        QnnDevice_Config_t arch_devconfig;
-        arch_devconfig.option = QNN_DEVICE_CONFIG_OPTION_CUSTOM;
-        arch_devconfig.customConfig = &arch_customconfig;
 
         /*
         QnnHtpDevice_CustomConfig_t arch_customconfig;
@@ -3508,7 +3496,7 @@ int qnn_instance::qnn_init(const QnnSaver_Config_t ** saver_config) {
         arch_devconfig.option       = QNN_DEVICE_CONFIG_OPTION_CUSTOM;
         arch_devconfig.customConfig = &arch_customconfig;
         */
-        const QnnDevice_Config_t * p_deviceconfig[] = { &soc_devconfig, &arch_devconfig, nullptr };
+        const QnnDevice_Config_t * p_deviceconfig[] = { &soc_devconfig, nullptr };
         qnnstatus = _qnn_raw_interface.deviceCreate(_qnn_log_handle, p_deviceconfig, &_qnn_device_handle);
     } else {
         qnnstatus = _qnn_interface.qnn_device_create(_qnn_log_handle, nullptr, &_qnn_device_handle);
