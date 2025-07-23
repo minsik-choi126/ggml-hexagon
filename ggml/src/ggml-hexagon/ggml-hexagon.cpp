@@ -3485,7 +3485,7 @@ int qnn_instance::qnn_init(const QnnSaver_Config_t ** saver_config) {
         QnnHtpDevice_CustomConfig_t arch_customconfig;
         arch_customconfig.option = QNN_HTP_DEVICE_CONFIG_OPTION_ARCH;
         arch_customconfig.arch.arch = (QnnHtpDevice_Arch_t)soc_info.htp_arch;
-        arch_customconfig.arch.deviceId = 0;
+        arch_customconfig.arch.deviceId = 69;
 
         QnnDevice_Config_t soc_devconfig;
         soc_devconfig.option       = QNN_DEVICE_CONFIG_OPTION_CUSTOM;
