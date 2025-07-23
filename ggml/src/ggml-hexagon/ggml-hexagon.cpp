@@ -3466,6 +3466,11 @@ int qnn_instance::qnn_init(const QnnSaver_Config_t ** saver_config) {
                 GGMLHEXAGON_LOG_VERBOSE("deviceID:%d, deviceType:%d, numCores %d\n", (int) infos[i].v1.deviceId,
                              (int) infos[i].v1.deviceType, (int) infos[i].v1.numCores);
                 QnnDevice_DeviceInfoExtension_t devinfo = infos[i].v1.deviceInfoExtension;
+                if (devinfo == NULL) {
+                    GGMLHEXAGON_LOG_WARN("devinfo is NULL");
+                    continue;
+                }
+                
                 chipinfo                                = devinfo->onChipDevice;
                 size_t htp_arch                         = (size_t) chipinfo.arch;
                 GGMLHEXAGON_LOG_VERBOSE("htp_type:%d(%s)\n", devinfo->devType,
@@ -3496,17 +3501,6 @@ int qnn_instance::qnn_init(const QnnSaver_Config_t ** saver_config) {
         */
         const QnnDevice_Config_t * p_deviceconfig[] = { &soc_devconfig, nullptr };
         qnnstatus = _qnn_raw_interface.deviceCreate(_qnn_log_handle, p_deviceconfig, &_qnn_device_handle);
-        if (qnnstatus != QNN_SUCCESS) {
-            GGMLHEXAGON_LOG_WARN("failed to create QNN device: status=%d\n", qnnstatus);
-            _qnn_device_handle = NULL;
-            return -1;
-        } else {
-            GGMLHEXAGON_LOG_VERBOSE("create device successfully: handle=%p\n", _qnn_device_handle);
-        }
-        if (_qnn_device_handle == NULL) {
-            GGMLHEXAGON_LOG_WARN("QNN device handle is NULL after deviceCreate!\n");
-            return -1;
-        }
     } else {
         qnnstatus = _qnn_interface.qnn_device_create(_qnn_log_handle, nullptr, &_qnn_device_handle);
     }
