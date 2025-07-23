@@ -3468,6 +3468,10 @@ int qnn_instance::qnn_init(const QnnSaver_Config_t ** saver_config) {
                 QnnDevice_DeviceInfoExtension_t devinfo = infos[i].v1.deviceInfoExtension;
                 chipinfo                                = devinfo->onChipDevice;
                 size_t htp_arch                         = (size_t) chipinfo.arch;
+                GGMLHEXAGON_LOG_INFO("soc_model: %d", soc_info.soc_model);
+                GGMLHEXAGON_LOG_INFO("htp_arch: %zu", soc_info.htp_arch);
+                GGMLHEXAGON_LOG_INFO("vtcmSize: %zu", soc_info.vtcm_size);
+
                 GGMLHEXAGON_LOG_VERBOSE("htp_type:%d(%s)\n", devinfo->devType,
                              (devinfo->devType == QNN_HTP_DEVICE_TYPE_ON_CHIP) ? "ON_CHIP" : "");
                 soc_info = { chipinfo.socModel, htp_arch, chipinfo.vtcmSize, {} };
