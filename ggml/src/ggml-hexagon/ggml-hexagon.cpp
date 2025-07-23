@@ -3496,6 +3496,17 @@ int qnn_instance::qnn_init(const QnnSaver_Config_t ** saver_config) {
         */
         const QnnDevice_Config_t * p_deviceconfig[] = { &soc_devconfig, nullptr };
         qnnstatus = _qnn_raw_interface.deviceCreate(_qnn_log_handle, p_deviceconfig, &_qnn_device_handle);
+        if (qnnstatus != QNN_SUCCESS) {
+            GGMLHEXAGON_LOG_WARN("failed to create QNN device: status=%d\n", qnnstatus);
+            _qnn_device_handle = NULL;
+            return -1;
+        } else {
+            GGMLHEXAGON_LOG_VERBOSE("create device successfully: handle=%p\n", _qnn_device_handle);
+        }
+        if (_qnn_device_handle == NULL) {
+            GGMLHEXAGON_LOG_WARN("QNN device handle is NULL after deviceCreate!\n");
+            return -1;
+        }
     } else {
         qnnstatus = _qnn_interface.qnn_device_create(_qnn_log_handle, nullptr, &_qnn_device_handle);
     }

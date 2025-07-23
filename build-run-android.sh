@@ -105,7 +105,7 @@ GGUF_MODEL_NAME=/sdcard/qwen1_5-1_8b-chat-q4_0.gguf
 
 #modify the following two lines to adapt to test phone
 HTP_ARCH_VERSION=v69
-HTP_ARCH_VERSION_a=v69
+HTP_ARCH_VERSION_a=V69
 
 ######## part-3: utilities and functions ########
 
