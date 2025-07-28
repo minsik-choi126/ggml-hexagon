@@ -589,7 +589,7 @@ GIT_EXECUTABLE:FILEPATH=/usr/bin/git
 HEXAGON_SDK_PATH:UNINITIALIZED=/home/minsik/ggml-hexagon/prebuilts/Hexagon_SDK/6.2.0.1
 
 //No help, variable specified on the command line.
-HTP_ARCH_VERSION:UNINITIALIZED=v69
+HTP_ARCH_VERSION:UNINITIALIZED=v75
 
 //llama: enable all compiler warnings
 LLAMA_ALL_WARNINGS:BOOL=ON
