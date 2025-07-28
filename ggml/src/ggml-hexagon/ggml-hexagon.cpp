@@ -60,6 +60,7 @@
 #include <utility>
 #include <future>
 #include <algorithm>
+#include <iostream>
 
 #if defined(__ANDROID__) || defined(__linux__)
 #include <unistd.h>
@@ -3473,12 +3474,14 @@ int qnn_instance::qnn_init(const QnnSaver_Config_t ** saver_config) {
                              (devinfo->devType == QNN_HTP_DEVICE_TYPE_ON_CHIP) ? "ON_CHIP" : "");
                 soc_info = { chipinfo.socModel, htp_arch, chipinfo.vtcmSize, {} };
             }
+            std::cout<<"here_0"<<std::endl;
             _qnn_raw_interface.deviceFreePlatformInfo(nullptr, p_info);
+            std::cout<<"here_0_1"<<std::endl;
         } else {
             GGMLHEXAGON_LOG_WARN("failed to get platform info, are we in emulator?\n");
             soc_info = { NONE, UNKNOWN_SM, 0, {} };
         }
-
+        std::cout<<"here_1"<<std::endl;
         QnnHtpDevice_CustomConfig_t soc_customconfig;
         soc_customconfig.option    = QNN_HTP_DEVICE_CONFIG_OPTION_SOC;
         soc_customconfig.socModel  = soc_info.soc_model;
@@ -3486,8 +3489,7 @@ int qnn_instance::qnn_init(const QnnSaver_Config_t ** saver_config) {
         QnnDevice_Config_t soc_devconfig;
         soc_devconfig.option       = QNN_DEVICE_CONFIG_OPTION_CUSTOM;
         soc_devconfig.customConfig = &soc_customconfig;
-
-        /*
+        std::cout<<"here_2"<<std::endl;
         QnnHtpDevice_CustomConfig_t arch_customconfig;
         arch_customconfig.option        = QNN_HTP_DEVICE_CONFIG_OPTION_ARCH;
         arch_customconfig.arch.arch     = (QnnHtpDevice_Arch_t)soc_info.htp_arch;
@@ -3495,9 +3497,10 @@ int qnn_instance::qnn_init(const QnnSaver_Config_t ** saver_config) {
         QnnDevice_Config_t arch_devconfig;
         arch_devconfig.option       = QNN_DEVICE_CONFIG_OPTION_CUSTOM;
         arch_devconfig.customConfig = &arch_customconfig;
-        */
+        std::cout<<"here_3"<<std::endl;
         const QnnDevice_Config_t * p_deviceconfig[] = { &soc_devconfig, nullptr };
         qnnstatus = _qnn_raw_interface.deviceCreate(_qnn_log_handle, p_deviceconfig, &_qnn_device_handle);
+        std::cout<<"here_4"<<std::endl;
     } else {
         qnnstatus = _qnn_interface.qnn_device_create(_qnn_log_handle, nullptr, &_qnn_device_handle);
     }
