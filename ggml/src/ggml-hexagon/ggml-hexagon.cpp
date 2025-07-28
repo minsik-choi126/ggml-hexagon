@@ -3528,8 +3528,8 @@ int qnn_instance::qnn_init(const QnnSaver_Config_t ** saver_config) {
         std::cout << "  arch_devconfig.option            = " << arch_devconfig.option << std::endl;
         std::cout << "  arch_devconfig.customConfig      = " << arch_devconfig.customConfig << std::endl;
         std::cout<<"here_3"<<std::endl;
-        //const QnnDevice_Config_t * p_deviceconfig[] = { &soc_devconfig, nullptr };
-        const QnnDevice_Config_t * p_deviceconfig[] = { &arch_devconfig, nullptr };
+        const QnnDevice_Config_t * p_deviceconfig[] = { &soc_devconfig, nullptr };
+        //const QnnDevice_Config_t * p_deviceconfig[] = { &arch_devconfig, nullptr };
         std::cout<<"here_3_1"<<std::endl;
         qnnstatus = _qnn_raw_interface.deviceCreate(_qnn_log_handle, p_deviceconfig, &_qnn_device_handle);
         std::cout<<"here_4"<<std::endl;
