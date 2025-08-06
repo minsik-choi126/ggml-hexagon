@@ -68,6 +68,7 @@ TEST_TARGETS = \
 	tests/test-tokenizer-0 \
 	tests/test-tokenizer-1-bpe \
 	tests/test-tokenizer-1-spm
+	tests/test-npu
 #	tests/test-opt \
 
 # Legacy build targets that were renamed in #7809, but should still be removed when the project is cleaned
@@ -1498,6 +1499,11 @@ tests/test-quantize-perf: tests/test-quantize-perf.cpp \
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 
+tests/test-npu: tests/test-npu.cpp \
+	$(OBJ_GGML)
+	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
+	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
+
 tests/test-sampling: tests/test-sampling.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
@@ -1542,6 +1548,11 @@ tests/test-autorelease: tests/test-autorelease.cpp tests/get-model.cpp \
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 
 tests/test-chat-template: tests/test-chat-template.cpp \
+	$(OBJ_ALL)
+	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
+	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
+
+tests/test-chat-template: tests/test-npu.cpp \
 	$(OBJ_ALL)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)

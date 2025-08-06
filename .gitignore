@@ -137,6 +137,7 @@ poetry.toml
 /tests/test-tokenizer-0
 /tests/test-tokenizer-1-bpe
 /tests/test-tokenizer-1-spm
+/tests/test-npu
 
 # Scripts
 !/scripts/install-oneapi.bat
