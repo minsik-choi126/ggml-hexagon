@@ -67,7 +67,8 @@ TEST_TARGETS = \
 	tests/test-sampling \
 	tests/test-tokenizer-0 \
 	tests/test-tokenizer-1-bpe \
-	tests/test-tokenizer-1-spm
+	tests/test-tokenizer-1-spm \
+	/tests/test-npu 
 #	tests/test-opt \
 
 # Legacy build targets that were renamed in #7809, but should still be removed when the project is cleaned
@@ -1489,6 +1490,11 @@ tests/test-opt: tests/test-opt.cpp \
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
 
 tests/test-quantize-fns: tests/test-quantize-fns.cpp \
+	$(OBJ_GGML)
+	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
+	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
+
+tests/test-npu: tests/test-npu.cpp \
 	$(OBJ_GGML)
 	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h $<,$^) $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS)
