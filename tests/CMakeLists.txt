@@ -153,6 +153,8 @@ if (NOT WIN32 OR NOT BUILD_SHARED_LIBS)
 
     if (NOT GGML_BACKEND_DL)
         llama_build(test-quantize-stats.cpp)
+        llama_build(test-npu.cpp)
+
     endif()
 
     llama_build(test-gbnf-validator.cpp)
@@ -209,6 +211,7 @@ if (NOT GGML_BACKEND_DL)
     llama_build_and_test(test-quantize-fns.cpp)
     llama_build_and_test(test-quantize-perf.cpp)
     llama_build_and_test(test-rope.cpp)
+    llama_build_and_test(test-npu.cpp)
 endif()
 
 # libmtmd
