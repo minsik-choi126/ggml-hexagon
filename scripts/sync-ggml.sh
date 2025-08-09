@@ -29,6 +29,5 @@ cp -rpv ../ggml/tests/test-opt.cpp           ./tests/test-opt.cpp
 cp -rpv ../ggml/tests/test-quantize-fns.cpp  ./tests/test-quantize-fns.cpp
 cp -rpv ../ggml/tests/test-quantize-perf.cpp ./tests/test-quantize-perf.cpp
 cp -rpv ../ggml/tests/test-backend-ops.cpp   ./tests/test-backend-ops.cpp
-cp -rpv ../ggml/tests/test-npu.cpp ./tests/test-npu.cpp
 cp -rpv ../LICENSE                     ./LICENSE
 cp -rpv ../ggml/scripts/gen-authors.sh ./scripts/gen-authors.sh

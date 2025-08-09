@@ -3,13 +3,13 @@
 
 # compile C with /home/minsik/ggml-hexagon/prebuilts/android-ndk-r28/toolchains/llvm/prebuilt/linux-x86_64/bin/clang
 # compile CXX with /home/minsik/ggml-hexagon/prebuilts/android-ndk-r28/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++
-C_DEFINES = -DGGML_BUILD -DGGML_COMMIT=\"79ad743\" -DGGML_SCHED_MAX_COPIES=4 -DGGML_SHARED -DGGML_VERSION=\"0.0.21\" -D_GNU_SOURCE -D_XOPEN_SOURCE=600 -Dggml_base_EXPORTS
+C_DEFINES = -DGGML_BUILD -DGGML_COMMIT=\"e824c1f\" -DGGML_SCHED_MAX_COPIES=4 -DGGML_SHARED -DGGML_VERSION=\"0.0.22\" -D_GNU_SOURCE -D_XOPEN_SOURCE=600 -Dggml_base_EXPORTS
 
 C_INCLUDES = -I/home/minsik/ggml-hexagon/ggml/src/. -I/home/minsik/ggml-hexagon/ggml/src/../include
 
 C_FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security      -O3 -march=armv8.2-a+dotprod+fp16 -ffp-model=fast -fno-finite-math-only -fno-limit-debug-info  -fPIC -Wshadow -Wstrict-prototypes -Wpointer-arith -Wmissing-prototypes -Werror=implicit-int -Werror=implicit-function-declaration -Wall -Wextra -Wpedantic -Wcast-qual -Wno-unused-function -Wunreachable-code-break -Wunreachable-code-return -Wdouble-promotion -pthread -std=gnu11
 
-CXX_DEFINES = -DGGML_BUILD -DGGML_COMMIT=\"79ad743\" -DGGML_SCHED_MAX_COPIES=4 -DGGML_SHARED -DGGML_VERSION=\"0.0.21\" -D_GNU_SOURCE -D_XOPEN_SOURCE=600 -Dggml_base_EXPORTS
+CXX_DEFINES = -DGGML_BUILD -DGGML_COMMIT=\"e824c1f\" -DGGML_SCHED_MAX_COPIES=4 -DGGML_SHARED -DGGML_VERSION=\"0.0.22\" -D_GNU_SOURCE -D_XOPEN_SOURCE=600 -Dggml_base_EXPORTS
 
 CXX_INCLUDES = -I/home/minsik/ggml-hexagon/ggml/src/. -I/home/minsik/ggml-hexagon/ggml/src/../include
 

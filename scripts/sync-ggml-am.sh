@@ -94,7 +94,6 @@ while read c; do
         tests/test-opt.cpp \
         tests/test-quantize-fns.cpp \
         tests/test-quantize-perf.cpp \
-        tests/test-npu.cpp \
         tests/test-backend-ops.cpp \
         LICENSE \
         scripts/gen-authors.sh \
